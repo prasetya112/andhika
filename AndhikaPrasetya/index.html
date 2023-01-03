@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/multi-style-layer.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/Jambangan_1.js"></script>
+        <script src="data/sungai_2.js"></script>
+        <script src="data/rel_3.js"></script>
+        <script src="data/point_4.js"></script>
+        <script src="data/Jalan_5.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-7.469419289512809,112.67457863528078],[-7.459062068875915,112.69554894391385]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_satelitgoogle_0');
+        map.getPane('pane_satelitgoogle_0').style.zIndex = 400;
+        var layer_satelitgoogle_0 = L.tileLayer('http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}', {
+            pane: 'pane_satelitgoogle_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_satelitgoogle_0;
+        map.addLayer(layer_satelitgoogle_0);
+        function pop_Jambangan_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nama'] !== null ? autolinker.link(feature.properties['nama'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Jambangan_1_0(feature) {
+            switch(String(feature.properties['nama'])) {
+                case 'Citra Sentosa Mandiri':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(208,236,30,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Diraya Regency':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(100,26,212,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Kebun Tebu':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,250,42,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Lahan Kosong':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(25,211,43,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Lapangan Jambangan':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(148,246,82,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Makam':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(150,147,69,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Pemukiman Warga Kampung':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,81,118,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Permata Pinang Graha':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(174,85,229,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sawah':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,250,42,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Sdn Jambangan':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(177,206,32,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'SHAISTANAYA':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(112,213,215,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Taman Anggun Sejahtera':
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(212,172,71,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Jambangan_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,81,118,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Jambangan_1');
+        map.getPane('pane_Jambangan_1').style.zIndex = 401;
+        map.getPane('pane_Jambangan_1').style['mix-blend-mode'] = 'normal';
+        var layer_Jambangan_1 = new L.geoJson(json_Jambangan_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Jambangan_1',
+            layerName: 'layer_Jambangan_1',
+            pane: 'pane_Jambangan_1',
+            onEachFeature: pop_Jambangan_1,
+            style: style_Jambangan_1_0,
+        });
+        bounds_group.addLayer(layer_Jambangan_1);
+        map.addLayer(layer_Jambangan_1);
+        function pop_sungai_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_sungai_2_0() {
+            return {
+                pane: 'pane_sungai_2',
+                opacity: 1,
+                color: 'rgba(33,139,155,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_sungai_2');
+        map.getPane('pane_sungai_2').style.zIndex = 402;
+        map.getPane('pane_sungai_2').style['mix-blend-mode'] = 'normal';
+        var layer_sungai_2 = new L.geoJson(json_sungai_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_sungai_2',
+            layerName: 'layer_sungai_2',
+            pane: 'pane_sungai_2',
+            onEachFeature: pop_sungai_2,
+            style: style_sungai_2_0,
+        });
+        bounds_group.addLayer(layer_sungai_2);
+        map.addLayer(layer_sungai_2);
+        function pop_rel_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nama'] !== null ? autolinker.link(feature.properties['Nama'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_rel_3_0() {
+            return {
+                pane: 'pane_rel_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        function style_rel_3_1() {
+            return {
+                pane: 'pane_rel_3',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_rel_3');
+        map.getPane('pane_rel_3').style.zIndex = 403;
+        map.getPane('pane_rel_3').style['mix-blend-mode'] = 'normal';
+        var layer_rel_3 = new L.geoJson.multiStyle(json_rel_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_rel_3',
+            layerName: 'layer_rel_3',
+            pane: 'pane_rel_3',
+            onEachFeature: pop_rel_3,
+            styles: [style_rel_3_0,style_rel_3_1,]
+        });
+        bounds_group.addLayer(layer_rel_3);
+        map.addLayer(layer_rel_3);
+        function pop_point_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nama'] !== null ? autolinker.link(feature.properties['nama'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_point_4_0() {
+            return {
+                pane: 'pane_point_4',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,90,153,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_point_4');
+        map.getPane('pane_point_4').style.zIndex = 404;
+        map.getPane('pane_point_4').style['mix-blend-mode'] = 'normal';
+        var layer_point_4 = new L.geoJson(json_point_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_point_4',
+            layerName: 'layer_point_4',
+            pane: 'pane_point_4',
+            onEachFeature: pop_point_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_point_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_point_4);
+        map.addLayer(layer_point_4);
+        function pop_Jalan_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nama'] !== null ? autolinker.link(feature.properties['Nama'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Jalan_5_0() {
+            return {
+                pane: 'pane_Jalan_5',
+                opacity: 1,
+                color: 'rgba(213,180,60,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Jalan_5');
+        map.getPane('pane_Jalan_5').style.zIndex = 405;
+        map.getPane('pane_Jalan_5').style['mix-blend-mode'] = 'normal';
+        var layer_Jalan_5 = new L.geoJson(json_Jalan_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Jalan_5',
+            layerName: 'layer_Jalan_5',
+            pane: 'pane_Jalan_5',
+            onEachFeature: pop_Jalan_5,
+            style: style_Jalan_5_0,
+        });
+        bounds_group.addLayer(layer_Jalan_5);
+        map.addLayer(layer_Jalan_5);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/Jalan_5.png" /> Jalan': layer_Jalan_5,'<img src="legend/point_4.png" /> point': layer_point_4,'<img src="legend/rel_3.png" /> rel': layer_rel_3,'<img src="legend/sungai_2.png" /> sungai': layer_sungai_2,'Jambangan<br /><table><tr><td style="text-align: center;"><img src="legend/Jambangan_1_CitraSentosaMandiri0.png" /></td><td>Citra Sentosa Mandiri</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_DirayaRegency1.png" /></td><td>Diraya Regency</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_KebunTebu2.png" /></td><td>Kebun Tebu</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_LahanKosong3.png" /></td><td>Lahan Kosong</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_LapanganJambangan4.png" /></td><td>Lapangan Jambangan</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_Makam5.png" /></td><td>Makam</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_PemukimanWargaKampung6.png" /></td><td>Pemukiman Warga Kampung</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_PermataPinangGraha7.png" /></td><td>Permata Pinang Graha</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_Sawah8.png" /></td><td>Sawah</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_SdnJambangan9.png" /></td><td>Sdn Jambangan</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_SHAISTANAYA10.png" /></td><td>SHAISTANAYA</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_TamanAnggunSejahtera11.png" /></td><td>Taman Anggun Sejahtera</td></tr><tr><td style="text-align: center;"><img src="legend/Jambangan_1_12.png" /></td><td></td></tr></table>': layer_Jambangan_1,"satelit google": layer_satelitgoogle_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_Jambangan_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['nama'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['nama']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Jambangan_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_rel_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nama'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['Nama']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_rel_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_point_4.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['nama'] !== null?String('<div style="color: #323232; font-size: 10pt; font-family: \'Times New Roman\', sans-serif;">' + layer.feature.properties['nama']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_point_4'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        map.addControl(new L.Control.Search({
+            layer: layer_Jambangan_1,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'nama'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
+        resetLabels([layer_Jambangan_1,layer_rel_3,layer_point_4]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Jambangan_1,layer_rel_3,layer_point_4]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Jambangan_1,layer_rel_3,layer_point_4]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Jambangan_1,layer_rel_3,layer_point_4]);
+        });
+        </script>
+    </body>
+</html>
